@@ -1,0 +1,27 @@
+﻿@page
+
+@model IndexModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Bake-Off Between RazorPages and Blazor with interactivity powered by HTMX</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th><a href="/razor/dogs" target="_blank">Razor Version</a></th>
+            <th><a href="/blazor/dogs" target="_blank">Blazor Version</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <iframe src="/razor/dogs" height="800" width="800" title="Razor Example"></iframe>
+            </td>
+            <td>
+                <iframe src="/blazor/dogs" height="800" width="800" title="Blazor Example"></iframe>
+            </td>
+        </tr>
+    </tbody>
+</table>

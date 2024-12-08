@@ -1,0 +1,40 @@
+﻿@using System.Text.Json
+@using HTMX_Blazor.vs.Razor.Models
+
+<div id="dogs" style="margin-left: 10%; margin-right: 10%">
+    <div class="grid-container">
+        @foreach (var dog in dogPhotos)
+        {
+            <div class="fill">
+                <img src="@dog" class="dog-image">
+            </div>
+        }
+    </div>
+</div>
+
+
+@code {
+    [Inject]
+    private HttpClient httpClient { get; set; }
+
+    public List<string> dogPhotos = new List<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await FetchDogPhoto();
+    }
+
+    private async Task<string?> FetchDogPhoto()
+    {
+        var response = await httpClient.GetAsync("https://dog.ceo/api/breeds/image/random/49");
+        if (response.IsSuccessStatusCode)
+        {
+            var result = JsonSerializer.Deserialize<DogsResult>(response.Content.ReadAsStream());
+            if (result == null || result.Status != "success") return null;
+
+            dogPhotos.AddRange(result.Message);
+        }
+
+        return null;
+    }
+}

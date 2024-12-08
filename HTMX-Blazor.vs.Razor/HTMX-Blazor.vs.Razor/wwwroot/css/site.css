@@ -1,0 +1,36 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    grid-gap: 10px;
+}
+
+.container *:after {
+    content: attr(class);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    aspect-ratio: 1;
+}
+
+    .fill img {
+        min-width: 100%;
+        min-height: 100%
+    }
+
+.main {
+    margin-left: 10%;
+    margin-right: 10%;
+}

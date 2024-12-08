@@ -1,0 +1,27 @@
+﻿@using HTMX_Blazor.vs.Razor.Features.Dogs.DogGrid
+
+<h1>Dog Gallery - Blazor Version</h1>
+<button hx-get="/blazor/dogs/doggrid" hx-target="#dogs" hx-swap="outerHTML">Get More Dogs</button>
+
+<DogGridComponent />
+
+@* We don't have to leverage HTMX on initial load because we can just load the Blazor Component here instead
+
+    <div id="dogs" hx-trigger="load" hx-get="/blazor/dogs/doggrid" hx-target="#dogs" style="margin-left: 10%; margin-right: 10%">
+</div> *@
+
+<div id="ready" style="margin-top: 20px;"></div>
+
+<script>
+    (function() {
+        var state = document.readyState;
+        if(state === 'interactive' || state === 'complete') {
+            document.getElementById('ready').textContent = "Page Now Interactive!";
+        }
+        else setTimeout(arguments.callee, 100);
+    })();
+</script>
+
+@code {
+
+}

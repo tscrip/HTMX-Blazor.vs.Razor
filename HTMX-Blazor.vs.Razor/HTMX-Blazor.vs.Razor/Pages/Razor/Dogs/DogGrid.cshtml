@@ -1,0 +1,23 @@
+﻿@page
+@model HTMX_Blazor.vs.Razor.Pages.Razor.Dogs.DogGridModel
+@{
+    if (!string.IsNullOrEmpty(ViewData["Layout"]?.ToString()))
+    {
+        Layout = ViewData["Layout"]?.ToString();
+    }
+    else
+    {
+        Layout = null;
+    }
+}
+
+<div id="dogs" style="margin-left: 10%; margin-right: 10%">
+    <div class="grid-container">
+        @foreach (var dog in Model.dogPhotos)
+        {
+            <div class="fill">
+                <img src="@dog" class="dog-image">
+            </div>
+        }
+    </div>
+</div>

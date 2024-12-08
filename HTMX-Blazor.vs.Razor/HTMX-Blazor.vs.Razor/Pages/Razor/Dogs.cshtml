@@ -1,0 +1,22 @@
+﻿@page
+@model HTMX_Blazor.vs.Razor.Pages.Razor.DogsModel
+@{
+}
+
+<h1>Dog Gallery - Razor Version</h1>
+<button hx-get="/razor/dogs/doggrid" hx-swap="outerHTML" hx-target="#dogs">Get More Dogs</button>
+
+<div id="dogs" hx-trigger="load" hx-get="/razor/dogs/doggrid" hx-target="#dogs" hx-swap="outerHTML" style="margin-left: 10%; margin-right: 10%">
+</div>
+
+<div id="ready" style="margin-top: 20px;"></div>
+
+<script>
+    (function() {
+        var state = document.readyState;
+        if(state === 'interactive' || state === 'complete') {
+            document.getElementById('ready').textContent = "Page Now Interactive!";
+        }
+        else setTimeout(arguments.callee, 100);
+    })();
+</script>
